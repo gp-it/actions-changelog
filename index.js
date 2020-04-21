@@ -1,4 +1,4 @@
-let exec = require('child_process').exec, child;
+let exec = require('child_process').exec
 
 exec('git tag',
   (error, stdout, stderr) => {
