@@ -46,14 +46,19 @@ module.exports =
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
-let exec = __webpack_require__(129).exec
+const exec = __webpack_require__(129).exec
+const fs = __webpack_require__(747)
 
-exec('git tag',
+exec('git describe --abbrev=0 --tags',
   (error, stdout, stderr) => {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
+    if (stdout) {
+      exec(`git log ${stdout.trim()}..master --oneline`,
+        (error, stdout, stderr) => {
+          if (stdout) {
+            const stream = fs.createWriteStream('Changelog.md', { flags: 'w' })
+            stream.write(stdout)
+          }
+        })
     }
   });
 
@@ -64,6 +69,13 @@ exec('git tag',
 /***/ (function(module) {
 
 module.exports = require("child_process");
+
+/***/ }),
+
+/***/ 747:
+/***/ (function(module) {
+
+module.exports = require("fs");
 
 /***/ })
 
