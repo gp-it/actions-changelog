@@ -1,4 +1,4 @@
-name: 'Exec'
+name: 'Changelog'
 description: 'Changelog creation'
 runs:
   using: 'node12'

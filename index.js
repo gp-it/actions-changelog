@@ -1,10 +1,15 @@
-let exec = require('child_process').exec
+const exec = require('child_process').exec
+const fs = require('fs')
 
-exec('git tag',
+exec('git describe --abbrev=0 --tags',
   (error, stdout, stderr) => {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
+    if (stdout) {
+      exec(`git log ${stdout.trim()}..master --oneline`,
+        (error, stdout, stderr) => {
+          if (stdout) {
+            const stream = fs.createWriteStream('Changelog.md', { flags: 'w' })
+            stream.write(stdout)
+          }
+        })
     }
   });
