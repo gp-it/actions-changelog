@@ -57,6 +57,7 @@ exec('git describe --abbrev=0 --tags',
           if (stdout) {
             const stream = fs.createWriteStream('Changelog.md', { flags: 'w' })
             stream.write(stdout)
+            exec('git commit -a -m "update changelog"')
           }
         })
     }
