@@ -1,8 +1,11 @@
 {
-  "name": "javascript-action",
+  "name": "@gp-it/actions-changelog",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "actions changelog of project",
   "main": "index.js",
+  "bin": {
+    "actions-changelog": "index.js"
+  },
   "scripts": {
     "lint": "eslint index.js",
     "package": "ncc build index.js -o dist",
@@ -10,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/gp-it/actions-changelog.git"
   },
   "keywords": [
     "GitHub",
@@ -20,16 +23,16 @@
   "author": "GitHub",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/gp-it/actions-changelog/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
-  "dependencies": {
-    "@actions/core": "^1.2.3",
-    "@actions/exec": "^1.0.3"
-  },
+  "homepage": "https://github.com/gp-it/actions-changelog#readme",
+  "dependencies": {},
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
     "eslint": "^6.8.0",
     "jest": "^25.4.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
